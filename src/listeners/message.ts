@@ -29,12 +29,12 @@ const messageListener = async (message: Message) => {
   const { stickerName, stickerAuthor } = parseOptions(options);
 
   // handle help
-  if (command.toLowerCase().includes('!help')) {
+  if (command.toLowerCase().includes('!tes')) {
     return helpHandler(message);
   }
 
   // handle mendolokidul
-  if (command.toLowerCase().includes('!mendolokidul')) {
+  if (['!mendolokidul', '!help'].includes(command)) {
     return mendolokidulHandler(message);
   }
 
@@ -44,9 +44,9 @@ const messageListener = async (message: Message) => {
     );
   }
 
-  if (command.toLowerCase().includes('!nomor')) {
+  if (command.toLowerCase().includes('!website')) {
     return message.reply(
-      'Nomor WhatsApp perangkat desa dapat dilihat di https://mendolokidul.kabpacitan.id'
+      'Website resmi desa dapat dilihat di https://mendolokidul.kabpacitan.id'
     );
   }
 
@@ -75,7 +75,7 @@ const messageListener = async (message: Message) => {
     return message.reply('Gambarnya mana?');
   }
 
-  message.reply('*Command salah*, coba cek kembali command yang Anda kirim');
+  // message.reply('*Command salah*, coba cek kembali command yang Anda kirim');
 };
 
 export default messageListener;
