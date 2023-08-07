@@ -3,6 +3,10 @@ import { Message } from 'whatsapp-web.js';
 import helpHandler from '../handlers/help';
 import stickerHandler from '../handlers/sticker';
 import mendolokidulHandler from '../handlers/mendolokidul';
+import informasiHandler from '../handlers/informasi';
+import layananHandler from '../handlers/layanan';
+import apbdesHandler from '../handlers/apbdes';
+import websiteHandler from '../handlers/website';
 import goErrorHandler from '../utils/goErrHandler';
 import parseOptions from '../utils/parseOptions';
 
@@ -38,22 +42,24 @@ const messageListener = async (message: Message) => {
     return mendolokidulHandler(message);
   }
 
-  if (command.toLowerCase().includes('!informasi')) {
-    return message.reply(
-      'Informasi mengenai kegiatan desa dapat dilihat di https://mendolokidul.kabpacitan.id'
-    );
+  if (command.toLowerCase().includes('1')) {
+    return informasiHandler(message);
   }
 
-  if (command.toLowerCase().includes('!website')) {
-    return message.reply(
-      'Website resmi desa dapat dilihat di https://mendolokidul.kabpacitan.id'
-    );
+  if (command.toLowerCase().includes('2')) {
+    return layananHandler(message);
   }
 
-  if (command.toLowerCase().includes('!persuratan')) {
-    return message.reply(
-      'Tata cara pengajuan surat ke pemerintah desa dapat dilihat di https://mendolokidul.kabpacitan.id'
-    );
+  if (command.toLowerCase().includes('3')) {
+    return apbdesHandler(message);
+  } 
+
+  if (command.toLowerCase().includes('4')) {
+    return websiteHandler(message);
+  }
+
+  if (command.toLowerCase().includes('5')) {
+    return mendolokidulHandler(message);
   }    
 
   // handle sticker
