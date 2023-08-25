@@ -1,6 +1,11 @@
-import { Message } from 'whatsapp-web.js';
+import { Message, MessageMedia } from 'whatsapp-web.js';
 
-const apbdesHandler = (message: Message) => {
+import goErrorHandler from '../utils/goErrHandler';
+import printLog from '../utils/logger';
+
+
+const apbdesHandler = async (message: Message) => {
+  const media = await MessageMedia.fromUrl('https://i.ibb.co/n1rzzBb/apbdes.jpg');
   message.reply(
     `URAIAN	|| ANGGARAN ||	REALISASI	|| LEBIH/KURANG
 
@@ -53,6 +58,10 @@ Jumlah Pembiayaan	 || 96.259.635,24 ||	96.259.635,24	 || -
       
 SILPA TAHUN BERJALAN	||	58.382.530,29 || 58.382.530,29 ||
     `
+  );
+
+  const { error: replyError } = await goErrorHandler(() =>
+    message.reply(media, message.from)
   );
 };
 
